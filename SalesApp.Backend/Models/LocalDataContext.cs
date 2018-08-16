@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace SalesApp.Backend.Models
 {
-    public class LocalDataContext:DataContext
+    public class LocalDataContext: DataContext
     {
         public new DbSet<SalesApp.Common.Models.Product> Products { get; set; }
     }

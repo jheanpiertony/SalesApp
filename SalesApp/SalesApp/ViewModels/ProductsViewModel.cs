@@ -9,12 +9,12 @@ namespace SalesApp.ViewModels
 {
     public class ProductsViewModel:BaseViewModel
     {
-        private ApiServices apiService;
-        private ObservableCollection<Product> products;
+        private ApiServices apiService;//consume el apiService
+        private ObservableCollection<Product> _products;//implementa para q refresque imediatamente
         public ObservableCollection<Product> Products
         {
-            get { return this.products; }
-            set { this.SetValue(ref this.products,value); }
+            get { return this._products; }
+            set { this.SetValue(ref this._products, value); }
         }
 
         public ProductsViewModel()
@@ -25,8 +25,9 @@ namespace SalesApp.ViewModels
 
         private async void LoadProducts()
         {
-            var url = "http://localhost:54579";
-            var response = await this.apiService.GetList<Product>(url, "/api", "/Products");
+            var url = "https://salesapiservices.azurewebsites.net";
+            //var url = "http://localhost:54579";
+            var response = await this.apiService.GetList<Product>(url, "/api", "/products");
 
             if (!response.IsSuccess)
             {

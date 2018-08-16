@@ -17,7 +17,8 @@ namespace SalesApp.Services
                 {
                     BaseAddress = new Uri(urlBase)
                 };
-                var url = string.Format("{0}{1}", prefix,controller);
+                //var url = string.Format("{0}{1}", prefix, controller);//otra forma de hacerlo
+                var url = $"{prefix}{controller}";
                 var response = await client.GetAsync(url);
                 var answer = await response.Content.ReadAsStringAsync();
                 if (!response.IsSuccessStatusCode)

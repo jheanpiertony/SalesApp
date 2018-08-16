@@ -4,11 +4,30 @@
              x:Class="SalesApp.Views.ProductsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
-        <StackLayout
+        <StackLayout       
             BindingContext="{Binding Products}">
             <ListView
                 ItemsSource="{Binding Products}">
-                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    FontAttributes="Bold"
+                                    Grid.Column="0"
+                                    Text="{Binding Description}"/>
+                                <Label
+                                    HorizontalOptions="End"
+                                    Grid.Column="1"
+                                    Text="{Binding Price, StringFormat='{0:C2}'}"/>
+                            </Grid>
+                        </ViewCell>                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>

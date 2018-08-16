@@ -1,6 +1,9 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Xamarin.Forms;
+using Xamarin.Android.Net;
+using SalesApp;
 
 
 namespace SalesApp.Droid
@@ -16,7 +19,7 @@ namespace SalesApp.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new app());
+            LoadApplication(new SalesApp.App());
         }
     }
 }
