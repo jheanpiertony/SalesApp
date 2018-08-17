@@ -1,9 +1,9 @@
-﻿using SalesApp.Common.Models;
-using SalesApp.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using SalesApp.Common.Models;
+using SalesApp.Services;
 
 namespace SalesApp.ViewModels
 {
