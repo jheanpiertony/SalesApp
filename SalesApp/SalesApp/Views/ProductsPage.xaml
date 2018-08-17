@@ -5,7 +5,8 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
     <ContentPage.Content>
         <StackLayout       
-            BindingContext="{Binding Products}">
+            BindingContext="{Binding Products}"
+            Padding="5">
             <ListView
                 ItemsSource="{Binding Products}">
                 <ListView.ItemTemplate>
@@ -23,7 +24,7 @@
                                 <Label
                                     HorizontalOptions="End"
                                     Grid.Column="1"
-                                    Text="{Binding Price, StringFormat='{0:C2}'}"/>
+                                    Text="{Binding Price}"/>
                             </Grid>
                         </ViewCell>                        
                     </DataTemplate>
