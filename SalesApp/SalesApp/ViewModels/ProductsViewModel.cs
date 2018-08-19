@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Xamarin.Forms;
-using SalesApp.Common.Models;
-using SalesApp.Services;
-
-namespace SalesApp.ViewModels
+﻿namespace SalesApp.ViewModels
 {
-    public class ProductsViewModel:BaseViewModel
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using Xamarin.Forms;
+    using SalesApp.Common.Models;
+    using SalesApp.Services;
+
+    public class ProductsViewModel : BaseViewModel
     {
-        private ApiServices apiService;//consume el apiService
+        private readonly ApiServices _apiService;//consume el apiService
         private ObservableCollection<Product> _products;//implementa para q refresque imediatamente
         public ObservableCollection<Product> Products
         {
@@ -19,7 +18,7 @@ namespace SalesApp.ViewModels
 
         public ProductsViewModel()
         {
-            this.apiService = new ApiServices();
+            this._apiService = new ApiServices();
             this.LoadProducts();
         }
 
@@ -27,7 +26,7 @@ namespace SalesApp.ViewModels
         {
             var url = "https://salesapiservices.azurewebsites.net";
             //var url = "http://localhost:54579";
-            var response = await this.apiService.GetList<Product>(url, "/api", "/products");
+            var response = await this._apiService.GetList<Product>(url, "/api", "/products");
 
             if (!response.IsSuccess)
             {

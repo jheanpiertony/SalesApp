@@ -1,7 +1,8 @@
-﻿using System.Data.Entity;
-
-namespace SalesApp.Domain.Models
+﻿namespace SalesApp.Domain.Models
 {
+    using SalesApp.Common.Models;
+    using System.Data.Entity;
+
     public class DataContext: DbContext
     {
 
@@ -11,6 +12,6 @@ namespace SalesApp.Domain.Models
             //this.Configuration.ProxyCreationEnabled = false;
         }
 
-        public DbSet<SalesApp.Common.Models.Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

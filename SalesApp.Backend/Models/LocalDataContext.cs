@@ -1,14 +1,8 @@
-﻿using SalesApp.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
-
-namespace SalesApp.Backend.Models
+﻿namespace SalesApp.Backend.Models
 {
+    using SalesApp.Domain.Models;
+
     public class LocalDataContext: DataContext
     {
-        public new DbSet<SalesApp.Common.Models.Product> Products { get; set; }
     }
 }
