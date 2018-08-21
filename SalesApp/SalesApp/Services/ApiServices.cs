@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
-using Plugin.Connectivity;
-using SalesApp.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-
-namespace SalesApp.Services
+﻿namespace SalesApp.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using Common.Models;
+    using Newtonsoft.Json;
+    using Plugin.Connectivity;
+
     public class ApiServices
     {
         public async Task<Response> CheckConnection()
@@ -17,7 +17,7 @@ namespace SalesApp.Services
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "no internet ",
+                    Message = "no internet",
                 };
             }
 

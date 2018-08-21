@@ -2,11 +2,11 @@
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using Xamarin.Forms;
-    using SalesApp.Common.Models;
-    using SalesApp.Services;
     using System.Windows.Input;
+    using Common.Models;
     using GalaSoft.MvvmLight.Command;
+    using Services;
+    using Xamarin.Forms;
 
     public class ProductsViewModel : BaseViewModel
     {
@@ -14,9 +14,9 @@
         private readonly ApiServices _apiService;//consume el apiService encangardo de las comunicaciones
         private ObservableCollection<Product> _products;//implementa para q refresque inmediatamente
         private bool _isRefreshing;
-
         #endregion
 
+        #region Propiedades
         public ICommand RefreshCommand
         {
             get
@@ -41,7 +41,7 @@
             this._apiService = new ApiServices();
             this.LoadProducts();
         }
-
+        #endregion
         private async void LoadProducts()
         {
             this.IsRefreshing = true;

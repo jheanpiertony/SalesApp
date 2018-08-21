@@ -5,11 +5,11 @@
 			 x:Class="SalesApp.App">
 	<Application.Resources>
 		<ResourceDictionary>
-            <!--Locator-->
+			<!--Locator-->
 			<infra:InstanceLocator x:Key="Locator"/>
-            <!--Parameters-->
-            <x:String x:Key="UrlAPI">https://salesapiservices.azurewebsites.net</x:String>
-            <x:Static x:Key="UrlAPILocal">http://localhost:54579</x:Static>
-        </ResourceDictionary>
+			<!--Parameters-->
+			<x:String x:Key="UrlAPI">https://salesapiservices.azurewebsites.net</x:String>
+			<x:String x:Key="UrlAPILocal">http://localhost:54579</x:String>
+		</ResourceDictionary>
 	</Application.Resources>
 </Application>
