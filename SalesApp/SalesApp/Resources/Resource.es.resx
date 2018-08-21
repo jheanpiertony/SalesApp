@@ -121,12 +121,9 @@
     <value>Error</value>
   </data>
   <data name="Accept" xml:space="preserve">
-    <value>Accept</value>
+    <value>Aceptar</value>
   </data>
   <data name="TurnOnInternet" xml:space="preserve">
-    <value>Please turn on your internet settings.</value>
-  </data>
-  <data name="Products" xml:space="preserve">
-    <value>Products</value>
+    <value>Por favor encienda su configuración de internet.</value>
   </data>
 </root>

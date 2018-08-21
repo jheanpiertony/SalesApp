@@ -17,7 +17,7 @@
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "no internet",
+                    Message = "Please, turn on your internet phone settings!",
                 };
             }
 
