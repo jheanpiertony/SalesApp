@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Text;
-
-namespace SalesApp.ViewModels
+﻿namespace SalesApp.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    public class BaseViewModel : INotifyPropertyChanged //refresca los cambios 
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -17,7 +15,6 @@ namespace SalesApp.ViewModels
 
         protected void SetValue<T>(ref T backingField, T value, [CallerMemberName] string propertyName = null)
         {
-
             if (EqualityComparer<T>.Default.Equals(backingField, value))
             {
                 return;

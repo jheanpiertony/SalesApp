@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Plugin.Connectivity;
 using SalesApp.Common.Models;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,33 @@ namespace SalesApp.Services
 {
     public class ApiServices
     {
+        public async Task<Response> CheckConnection()
+        {
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "no internet ",
+                };
+            }
+
+            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("google.com");
+            if (!isReachable)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "not ",
+                };
+            }
+
+            return new Response
+            {
+                IsSuccess = true,
+            };
+        }
+
         public async Task<Response> GetList<T>(string urlBase, string prefix, string controller)
         {
             try
