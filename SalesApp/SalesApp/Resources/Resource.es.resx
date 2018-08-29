@@ -124,6 +124,12 @@
     <value>Aceptar</value>
   </data>
   <data name="TurnOnInternet" xml:space="preserve">
-    <value>Por favor encienda su configuración de internet.</value>
+    <value>Por favor, encienda wifi.</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Productos</value>
+  </data>
+  <data name="NotInternet" xml:space="preserve">
+    <value>No esta conectado a internet.</value>
   </data>
 </root>

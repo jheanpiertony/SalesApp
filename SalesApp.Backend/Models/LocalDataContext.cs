@@ -1,8 +1,8 @@
 ﻿namespace SalesApp.Backend.Models
 {
-    using SalesApp.Domain.Models;
+    using Domain.Models;
 
-    public class LocalDataContext: DataContext
+    public class LocalDataContext : DataContext
     {
     }
 }

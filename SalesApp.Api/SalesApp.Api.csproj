@@ -345,7 +345,7 @@
       <Name>SalesApp.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\SalesApp.Domain\SalesApp.Domain.csproj">
-      <Project>{0b485de7-9bb8-42af-85ac-18606212a11b}</Project>
+      <Project>{972c7a14-2278-4f4b-950d-7e483e9c883d}</Project>
       <Name>SalesApp.Domain</Name>
     </ProjectReference>
   </ItemGroup>

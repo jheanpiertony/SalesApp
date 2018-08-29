@@ -126,4 +126,10 @@
   <data name="TurnOnInternet" xml:space="preserve">
     <value>Por favor, ligue suas configurações de internet.</value>
   </data>
+  <data name="Products" xml:space="preserve">
+    <value>Produtos</value>
+  </data>
+  <data name="NotInternet" xml:space="preserve">
+    <value>Not Internet.</value>
+  </data>
 </root>

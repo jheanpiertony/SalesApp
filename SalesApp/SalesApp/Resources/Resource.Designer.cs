@@ -79,6 +79,15 @@ namespace SalesApp.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Not Internet..
+        /// </summary>
+        public static string NotInternet {
+            get {
+                return ResourceManager.GetString("NotInternet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Products.
         /// </summary>
         public static string Products {

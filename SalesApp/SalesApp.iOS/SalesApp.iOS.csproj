@@ -89,6 +89,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Implementations\Localize.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -157,6 +158,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\SalesApp.Common\SalesApp.Common.csproj">
+      <Project>{b2acc962-e025-400b-8328-91b10d33309d}</Project>
+      <Name>SalesApp.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SalesApp\SalesApp.csproj">
       <Project>{72995039-ED89-4270-B88E-9DE303B946B0}</Project>
       <Name>SalesApp</Name>

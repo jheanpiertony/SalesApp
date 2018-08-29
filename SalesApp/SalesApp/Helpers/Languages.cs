@@ -23,14 +23,14 @@
             get { return Resource.Error; }
         }
 
-        public static string InternentSettings
+        public static string TurnOnInternet
         {
-            get { return Resource.InternentSettings; }
+            get { return Resource.TurnOnInternet; }
         }
 
-        public static string NoConnection
+        public static string NoInternet
         {
-            get { return Resource.NoConnection; }
+            get { return Resource.NotInternet; }
         }
 
         public static string Products
@@ -38,39 +38,39 @@
             get { return Resource.Products; }
         }
 
-        public static string NewProduct
-        {
-            get { return Resource.NewProduct; }
-        }
+        //public static string NewProduct
+        //{
+        //    get { return Resource.NewProduct; }
+        //}
 
-        public static string Description
-        {
-            get { return Resource.Description; }
-        }
+        //public static string Description
+        //{
+        //    get { return Resource.Description; }
+        //}
 
-        public static string DescriptionPlaceHolder
-        {
-            get { return Resource.DescriptionPlaceHolder; }
-        }
+        //public static string DescriptionPlaceHolder
+        //{
+        //    get { return Resource.DescriptionPlaceHolder; }
+        //}
 
-        public static string Price
-        {
-            get { return Resource.Price; }
-        }
+        //public static string Price
+        //{
+        //    get { return Resource.Price; }
+        //}
 
-        public static string PricePlaceHolder
-        {
-            get { return Resource.PricePlaceHolder; }
-        }
+        //public static string PricePlaceHolder
+        //{
+        //    get { return Resource.PricePlaceHolder; }
+        //}
 
-        public static string Save
-        {
-            get { return Resource.Save; }
-        }
+        //public static string Save
+        //{
+        //    get { return Resource.Save; }
+        //}
 
-        public static string ChangeImage
-        {
-            get { return Resource.ChangeImage; }
-        }
+        //public static string ChangeImage
+        //{
+        //    get { return Resource.ChangeImage; }
+        //}
     }
 }

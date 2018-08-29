@@ -19,7 +19,7 @@ namespace SalesApp.Backend.Controllers
         // GET: Products
         public async Task<ActionResult> Index()
         {
-            return View(await db.Products.ToListAsync());
+            return View(await db.Products.OrderBy(p => p.Description).ToListAsync());
         }
 
         // GET: Products/Details/5
@@ -48,7 +48,7 @@ namespace SalesApp.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Description,Price,IsAvailable,PublishOn")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Description,Remarks,ImagePath,Price,IsAvailable,PublishOn")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace SalesApp.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Description,Price,IsAvailable,PublishOn")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Description,Remarks,ImagePath,Price,IsAvailable,PublishOn")] Product product)
         {
             if (ModelState.IsValid)
             {
