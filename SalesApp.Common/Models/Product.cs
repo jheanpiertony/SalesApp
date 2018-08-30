@@ -25,6 +25,16 @@
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = false)]
         public DateTime PublishOn { get; set; }
 
+        public string ImageFullPath {
+            get {
+                if (string.IsNullOrEmpty(this.ImagePath))
+                {
+                    return "noproduct";
+                }
+                return $"https://salesapiservices.azurewebsites.net/{this.ImagePath.Substring(1)}";
+            }
+        }
+
         public override string ToString()
         {
             return this.Description;

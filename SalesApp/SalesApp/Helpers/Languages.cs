@@ -38,30 +38,30 @@
             get { return Resource.Products; }
         }
 
-        //public static string NewProduct
-        //{
-        //    get { return Resource.NewProduct; }
-        //}
+        public static string AddProduct
+        {
+            get { return Resource.AddProduct; }
+        }
 
-        //public static string Description
-        //{
-        //    get { return Resource.Description; }
-        //}
+        public static string Description
+        {
+            get { return Resource.Description; }
+        }
 
-        //public static string DescriptionPlaceHolder
-        //{
-        //    get { return Resource.DescriptionPlaceHolder; }
-        //}
+        public static string DescriptionPlaceHolder
+        {
+            get { return Resource.DescriptionPlaceholder; }
+        }
 
-        //public static string Price
-        //{
-        //    get { return Resource.Price; }
-        //}
+        public static string Price
+        {
+            get { return Resource.Price; }
+        }
 
-        //public static string PricePlaceHolder
-        //{
-        //    get { return Resource.PricePlaceHolder; }
-        //}
+        public static string PricePlaceHolder
+        {
+            get { return Resource.PricePlaceholder; }
+        }
 
         //public static string Save
         //{
