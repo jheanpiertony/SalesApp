@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using SalesApp.Backend.Models;
-using SalesApp.Common.Models;
-
-namespace SalesApp.Backend.Controllers
+﻿namespace SalesApp.Backend.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Net;
+    using System.Web;
+    using System.Web.Mvc;
+    using SalesApp.Backend.Models;
+    using SalesApp.Common.Models;
+    using SalesApp.Backend.Helpers;
+
     public class ProductsController : Controller
     {
         private LocalDataContext db = new LocalDataContext();
@@ -47,17 +48,41 @@ namespace SalesApp.Backend.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Description,Remarks,ImagePath,Price,IsAvailable,PublishOn")] Product product)
+        [ValidateAntiForgeryToken] //[Bind(Include = "Id,Description,Remarks,ImagePath,Price,IsAvailable,PublishOn")]
+        public async Task<ActionResult> Create(ProductView _view)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
-                await db.SaveChangesAsync();
+                var pic = string.Empty;
+                var folder = "~/Content/Products";
+
+                if (_view.ImageFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(_view.ImageFile, folder);
+                    pic = $"{folder}/{pic}";
+                }
+
+                var product = this.ToProduct(_view, pic);
+                this.db.Products.Add(product);
+                await this.db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(product);
+            return View(_view);
+        }
+
+        private Product ToProduct(ProductView _view, string pic)
+        {
+           return new Product 
+           {
+               Description = _view.Description,
+               ImagePath = pic,
+               IsAvailable = _view.IsAvailable,
+               Price = _view.Price,
+               Id = _view.Id,
+               PublishOn = _view.PublishOn,
+               Remarks = _view.Remarks
+           };
         }
 
         // GET: Products/Edit/5
@@ -67,28 +92,54 @@ namespace SalesApp.Backend.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await db.Products.FindAsync(id);
+            var product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+
+            var _view = this.ToView(product);
+            return View(_view);
+        }
+
+        private ProductView ToView(Product product)
+        {
+            return new ProductView
+            {
+                Description = product.Description,
+                ImagePath = product.ImagePath,
+                IsAvailable = product.IsAvailable,
+                Price = product.Price,
+                Id = product.Id,
+                PublishOn = product.PublishOn,
+                Remarks = product.Remarks
+            };
         }
 
         // POST: Products/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Description,Remarks,ImagePath,Price,IsAvailable,PublishOn")] Product product)
+        [ValidateAntiForgeryToken] //[Bind(Include = "Id,Description,Remarks,ImagePath,Price,IsAvailable,PublishOn")]
+        public async Task<ActionResult> Edit( ProductView _view)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                var pic = _view.ImagePath;
+                var folder = "~/Content/Products";
+
+                if (_view.ImageFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(_view.ImageFile, folder);
+                    pic = $"{folder}/{pic}";
+                }
+
+                var product = this.ToProduct(_view, pic);
+                this.db.Entry(product).State= EntityState.Modified;
+                await this.db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(product);
+            return View(_view);
         }
 
         // GET: Products/Delete/5
@@ -98,7 +149,7 @@ namespace SalesApp.Backend.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await db.Products.FindAsync(id);
+            var product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();

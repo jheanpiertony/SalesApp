@@ -8,11 +8,10 @@
     using System.Linq;
     using System.Net;
     using System.Net.Http;
-    using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Http.Description;
-    using Common.Models;
-    using Domain.Models;
+    using SalesApp.Common.Models;
+    using SalesApp.Domain.Models;
 
     public class ProductsController : ApiController
     {
@@ -26,9 +25,9 @@
 
         // GET: api/Products/5
         [ResponseType(typeof(Product))]
-        public async Task<IHttpActionResult> GetProduct(int id)
+        public IHttpActionResult GetProduct(int id)
         {
-            Product product = await db.Products.FindAsync(id);
+            Product product = db.Products.Find(id);
             if (product == null)
             {
                 return NotFound();
@@ -39,7 +38,7 @@
 
         // PUT: api/Products/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutProduct(int id, Product product)
+        public IHttpActionResult PutProduct(int id, Product product)
         {
             if (!ModelState.IsValid)
             {
@@ -55,7 +54,7 @@
 
             try
             {
-                await db.SaveChangesAsync();
+                db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -74,7 +73,7 @@
 
         // POST: api/Products
         [ResponseType(typeof(Product))]
-        public async Task<IHttpActionResult> PostProduct(Product product)
+        public IHttpActionResult PostProduct(Product product)
         {
             if (!ModelState.IsValid)
             {
@@ -82,23 +81,23 @@
             }
 
             db.Products.Add(product);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = product.Id }, product);
         }
 
         // DELETE: api/Products/5
         [ResponseType(typeof(Product))]
-        public async Task<IHttpActionResult> DeleteProduct(int id)
+        public IHttpActionResult DeleteProduct(int id)
         {
-            Product product = await db.Products.FindAsync(id);
+            Product product = db.Products.Find(id);
             if (product == null)
             {
                 return NotFound();
             }
 
             db.Products.Remove(product);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
 
             return Ok(product);
         }
